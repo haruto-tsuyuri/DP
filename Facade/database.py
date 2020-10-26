@@ -1,9 +1,10 @@
 from configparser import ConfigParser
 
+
 class Database(object):
     @classmethod
     def getProperties(cls, db_name):
-        file_name = db_name + '.ini'
+        file_name = db_name + '.init'
         conf = ConfigParser()
         try:
             conf.read(file_name)
