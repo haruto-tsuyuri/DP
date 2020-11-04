@@ -16,36 +16,35 @@ class SmartHomeFacade:
         self.smart_home_api = SmartHomeApi()
         self.smart_home_state = SmartHomeState()
 
-    def start_movie(self, movie_title) -> None:
+    def start_movie(self, movie_title: str) -> None:
         self.smart_home_state.lights_on = self.smart_home_api.turn_lights_off()
         self.smart_home_state.tv_on = self.tv_api.turn_on()
         self.smart_home_state.audio_system_on = self.audio_api.turn_speakers_on()
         self.smart_home_state.netflix_connected = self.netflix_api.connect()
         self.netflix_api.play(movie_title)
 
-    def stop_movie(self):
+    def stop_movie(self) -> None:
         self.smart_home_state.netflix_connected = self.netflix_api.disconnect()
         self.smart_home_state.lights_on = self.smart_home_api.turn_lights_on()
         self.smart_home_state.tv_on = self.tv_api.turn_off()
         self.smart_home_state.audio_system_on = self.audio_api.turn_speakers_off()
 
-    def start_gaming(self):
+    def start_gaming(self) -> None:
         self.smart_home_state.lights_on = self.smart_home_api.turn_lights_off()
         self.smart_home_state.tv_on = self.tv_api.turn_on()
         self.gaming_facade.start_gaming()
 
-    def stop_gaming(self):
+    def stop_gaming(self) -> None:
         self.gaming_facade.stop_gaming()
         self.smart_home_state.tv_on = self.tv_api.turn_off()
         self.smart_home_state.lights_on = self.smart_home_api.turn_lights_on()
 
-    def start_streaming(self):
+    def start_streaming(self) -> None:
         self.smart_home_state.lights_on = self.smart_home_api.turn_lights_off()
         self.smart_home_state.tv_on = self.tv_api.turn_on()
         self.gaming_facade.start_streaming()
 
-    def stop_streaming(self):
+    def stop_streaming(self) -> None:
         self.gaming_facade.stop_streaming()
         self.smart_home_state.lights_on = self.smart_home_api.turn_lights_on()
         self.smart_home_state.tv_on = self.tv_api.turn_off()
-

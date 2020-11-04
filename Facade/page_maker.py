@@ -4,9 +4,9 @@ from Facade.html_writer import HtmlWriter
 
 class PageMaker(object):
     @classmethod
-    def makeWelcome_page(cls, mailaddr, file_name):
+    def make_welcome_page(cls, mailaddr, file_name):
         try:
-            prop = Database.getProperties('mail_data')
+            prop = Database.get_properties('mail_data')
             user_name = prop[mailaddr]
             writer = HtmlWriter(open(file_name, 'w'))
             writer.title('Welcomes to {}\'s page!'.format(user_name))
